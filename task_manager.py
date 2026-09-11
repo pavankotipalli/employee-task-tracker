@@ -26,6 +26,23 @@ class TaskManager:
             "priority": priority,
             "completed": False
         }
+    def view_tasks(self):
+        if not self.tasks:
+            print("No tasks found.")
+            return
+
+        print("\n=== All Tasks ===")
+
+        for task in self.tasks:
+            status = "Completed" if task["completed"] else "Pending"
+
+            print(
+                f'ID: {task["id"]} | '
+                f'Employee: {task["employee"]} | '
+                f'Task: {task["description"]} | '
+                f'Priority: {task["priority"]} | '
+                f'Status: {status}'
+            )
 
         self.tasks.append(task)
         self.save_tasks()
